@@ -13,7 +13,7 @@
             die("Problemas con la conexión");
     
         $registros = mysqli_query($conexion, "update alumnos
-                              set codCurso=$_REQUEST[codigocurso], nombre='$_REQUEST[nombreCambio]', mail='$_REQUEST[emailCambio]'
+                              set codCurso=$_REQUEST[codigocurso], nombre='$_REQUEST[nombreCambio]', mail='$_REQUEST[emailCambio]', fechaNac='$_REQUEST[dateCambio]'
                             where codigoAlum='$_REQUEST[codigoEstudiante]'") or
             die("Problemas en el select:" . mysqli_error($conexion));
         echo "Los cambios se realizaron con exito <br><hr>";

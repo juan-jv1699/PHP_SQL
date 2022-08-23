@@ -14,6 +14,8 @@
       <input type="text" name="nombre" required><br>
       Ingrese mail:
       <input type="email" name="email" required><br>
+      Ingrese la fecha de nacimiento:
+      <input type="date" name="date" id="bddate"><br>
       Seleccione el curso:
       <select name="codigocurso">
         <?php

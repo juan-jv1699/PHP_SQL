@@ -16,7 +16,7 @@
             echo "Nombre: ".$answer[1]."<br>";
             echo "Codigo: ".$answer[0]."<br>";
             echo "Email: ".$answer[2]."<br>";
-            echo "Curso: ".$answer[3]."<br>";
+            echo "Curso: ".$answer[4]."<br>";
             echo "Nombre curso: ". $answer['nombreCurso']."<br>";
             echo "Codigo curso: ". $answer['codigocurso']."<br>";
         }
@@ -49,6 +49,10 @@
       <hr>
       <p>si desea cambiar de email ingrese el email deseado</p>
       <input type="email" name="emailCambio" value="<?php echo $answer[2] ?>">
+      <br>
+      <hr>
+      <p>si desea cambiar la fecha de nacimiento ingrese la fecha</p>
+      <input type="date" name="dateCambio" value="<?php echo $answer[5] ?>">
       <br>
       <input type="submit" value="Modificar">
     </form>
