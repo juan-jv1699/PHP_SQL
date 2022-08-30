@@ -14,16 +14,11 @@
     
         $registros = mysqli_query($conexion, "update alumnos
                               set codCurso=$_REQUEST[codigocurso], nombre='$_REQUEST[nombreCambio]', mail='$_REQUEST[emailCambio]', fechaNac='$_REQUEST[dateCambio]'
-                            where codigoAlum='$_REQUEST[codigoEstudiante]'") or
+                            where codigoAlum=$_REQUEST[codigoEstudiante]") or
             die("Problemas en el select:" . mysqli_error($conexion));
-        echo "Los cambios se realizaron con exito <br><hr>";
+
+        header("location: updateDate.php?done=true&oldCode={$_REQUEST['codigoEstudiante']}");
         ?>
-        <div class="btns">
-                
-                <form action="../index.html" method="POST">
-                      <input type="submit" value="inicio" >
-                </form>
-        </div>
     </section>
 </body>
 

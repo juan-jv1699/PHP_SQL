@@ -90,6 +90,10 @@ if($_POST){
             <button type="button" onclick="location.href='Exercise01PHP/searchDate.php'">Ir</button>
         </div>
         <div class="options">
+            Consultar codigo ASCII
+            <button type="button" onclick="location.href='Exercise01PHP/readcodAscii.php'">Ir</button>
+        </div>
+        <div class="options">
             test
             <button type="button" onclick="location.href='Exercise02PHP/test01.php'">Ir</button>
         </div>

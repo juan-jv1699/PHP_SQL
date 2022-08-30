@@ -38,6 +38,10 @@ $page = 4
     echo "Nombre:" . $reg['nombre'] . "<br>";
     echo "Mail:" . $reg['mail'] . "<br>";
     echo "Curso:" . $reg['nombreCurso'] . "<br>";
+    echo "<form action='updateDate.php' method='post'>
+    <input type='hidden' name='oldCode' value='$reg[codigo]'>
+    <input type='submit' value='✏️'>
+    </form>";
     echo "<hr>";
   }
   if ($inicio == 0)
@@ -65,7 +69,7 @@ $page = 4
   ?>
 
   
-  <form action="../index.html" method="post">
+  <form action="../menu.php" method="post">
     <input type="submit" value="Volver">
   </form>
   </section>
