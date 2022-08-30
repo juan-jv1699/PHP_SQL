@@ -25,7 +25,7 @@
             <form action="/Exercise01PHP/deleteRegistro.php" method="POST">
                   <input type="submit" value="eliminar otro registro" >
             </form>
-            <form action="../index.html" method="POST">
+            <form action="../menu.php" method="POST">
                   <input type="submit" value="inicio" >
             </form>
         </div>

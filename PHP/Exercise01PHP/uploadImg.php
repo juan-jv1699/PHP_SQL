@@ -21,6 +21,9 @@
           <input type="file" name="foto"><br>
           <input type="submit" value="Enviar">
         </form>
+        <form action="../menu.php">
+            <input type="submit" value="regresar al inicio">
+        </form>
     </section>
 </body>
 

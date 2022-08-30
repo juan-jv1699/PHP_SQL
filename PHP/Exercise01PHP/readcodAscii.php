@@ -29,6 +29,9 @@
                                 <button type="submit" class="btn btn-primary mt-2">Submit</button>
                             </div>
                         </form>
+                        <form class="form-label" action="../menu.php">
+                            <input class="btn btn-outline-primary mt-3" type="submit" value="regresar al inicio">
+                        </form>
                     </div>
                     <div class="my-5 d-flex flex-column p-5 card">
                         <?php if($_POST):?>

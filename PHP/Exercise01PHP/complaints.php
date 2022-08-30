@@ -31,6 +31,9 @@
                                 Quejas
                             </a>
                         </form>
+                        <form class="form-label" action="../menu.php">
+                            <input class="btn btn-outline-primary mt-3" type="submit" value="regresar al inicio">
+                        </form>
                     </div>
                 </div>
             </article>

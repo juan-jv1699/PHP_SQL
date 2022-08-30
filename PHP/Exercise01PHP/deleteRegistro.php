@@ -11,6 +11,9 @@
             <input type="email" name="mail" requiered>
             <input type="submit" value="consultar">
         </form>
+        <form action="../menu.php">
+            <input type="submit" value="regresar al inicio">
+        </form>
     </section>
 </body>
 </html>

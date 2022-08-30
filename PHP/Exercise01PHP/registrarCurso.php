@@ -16,7 +16,7 @@
       
       <input type="submit" value="Registrar">
     </form>
-    <form action="../index.html" method="post">
+    <form action="../menu.php" method="post">
           <input type="submit" value="Volver">
       </form>
   </section>

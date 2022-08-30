@@ -12,7 +12,7 @@
             <input type="email" name="mail">
             <input type="submit" value="Buscar">
         </form>
-        <form action="../index.html">
+        <form action="../menu.php">
             <input type="submit" value="regresar al inicio">
         </form>
     </section>

@@ -17,8 +17,10 @@
         <hr>
         <input type="submit" name="operar">
     </form>
-    <?php
-    if($_POST){
+    <form action="../menu.php">
+        <input type="submit" value="regresar al inicio">
+    </form>
+    <?php if($_POST){
         echo "La tabla de multiplicar de $_REQUEST[num] es: <br>";
         for ($i=1; $i <= 10; $i++) { 
             $resp = $i * $_REQUEST['num'];

@@ -21,7 +21,7 @@
 
         mysqli_close($conexion);
     ?>
-    <form action="../index.html">
+    <form action="../menu.php">
         <input type="submit" value="inicio">
     </form>
     </section>

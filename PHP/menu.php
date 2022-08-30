@@ -2,16 +2,16 @@
 session_start();
 echo "<h1>Bienvenido $_SESSION[nombre]</h1>";
 if($_POST){
-    header('location:""');
     if ($_REQUEST['radio'] == "rojo"){
         setcookie("color", "#a52a2a", time() + 60 * 60 * 24 * 365, "/");
     }
     elseif ($_REQUEST['radio'] == "verde"){
-        setcookie("color", "#00ffff", time() + 60 * 60 * 24 * 365, "/");
+        setcookie("color", "#00ff52", time() + 60 * 60 * 24 * 365, "/");
     }
     elseif ($_REQUEST['radio'] == "azul"){
         setcookie("color", "#00008b", time() + 60 * 60 * 24 * 365, "/");  
     }
+    header("refresh:0,url = menu.php");
 }
 ?>
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ if($_POST){
         </div>
         <div class="options">
             resetear tabla
-            <button type="button" onclick="location.href='Exercise01PHP/deleteTable.php'">Ir</button>
+            <button type="button" onclick="location.href='Exercise01PHP/deleteTable.php'" disabled>Ir</button>
         </div>
         <div class="options">
             Tablas de multiplicar
@@ -77,10 +77,7 @@ if($_POST){
             Upload a Image
             <button type="button" onclick="location.href='Exercise01PHP/uploadImg.php'">Ir</button>
         </div>
-        <div class="options">
-            Upload a Image
-            <button type="button" onclick="location.href='Exercise01PHP/uploadImg.php'">Ir</button>
-        </div>
+    
         <div class="options">
             Complaints
             <button type="button" onclick="location.href='Exercise01PHP/complaints.php'">Ir</button>
@@ -98,7 +95,7 @@ if($_POST){
             <button type="button" onclick="location.href='Exercise02PHP/test01.php'">Ir</button>
         </div>
         <div class="options colorSelect">
-            <form class="colorform" action="index.php" method="post">
+            <form class="colorform" action="menu.php" method="POST">
                 Seleccione de que color desea que sea la página de ahora en más:<br>
                 <input class="option" type="radio" value="rojo" name="radio">Rojo<br>
                 <input class="option" type="radio" value="verde" name="radio">Verde<br>

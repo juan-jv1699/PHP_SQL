@@ -42,6 +42,10 @@ $page = 4
     <input type='hidden' name='oldCode' value='$reg[codigo]'>
     <input type='submit' value='✏️'>
     </form>";
+    echo "<form action='deleteUser.php' method='get'>
+    <input type='hidden' name='oldCode' value='$reg[codigo]'>
+    <input type='submit' value='❌'>
+    </form>";
     echo "<hr>";
   }
   if ($inicio == 0)

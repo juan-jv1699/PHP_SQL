@@ -31,6 +31,10 @@
     echo "Nombre:". "<a href=cantidadAlumnos.php?codigocur=$reg[codigoCurso]>$reg[nombreCurso]</a><br>";
     echo "Cantidad alumnos:" . $reg['cantidad'] . "<br>";
     echo "<br>";
+    echo "<form action='updateCurso.php' method='get'>
+    <input type='hidden' name='oldCode' value='$reg[codigoCurso]'>
+    <input type='submit' value='✏️'>
+    </form>";
     echo "<hr>";
   }
   if ($inicio == 0)
@@ -46,7 +50,7 @@
     echo "siguientes";
   mysqli_close($conexion);
   ?>
-  <form action="../index.html" method="post">
+  <form action="../menu.php" method="post">
     <input type="submit" value="Volver">
   </form>
   </section>

@@ -48,6 +48,9 @@
                             <?php echo isset($_GET['errores']) ? "<p class='alert'>Corrige el formulario y vuelve a intenatarlo</p>" : ""?>
                             <?php echo isset($_GET['date']) ? "<p>Formulario valido</p>" : ""?>
                         </div>
+                        <form class="form-label" action="../menu.php">
+                            <input class="btn btn-outline-primary" type="submit" value="regresar al inicio">
+                        </form>
                     </div>
                 </div>
             </article>
