@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+* {
+    font-family: 'Roboto','sans-serif';
+}
+html {
+    background-color: rgb(230, 242, 252);
+}
+section {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 400px;
+    max-width: 720px;
+    text-align: center;
+    justify-items: auto;
+    background-color: midnightblue;
+    border: solid 2px rgb(0, 0, 0);
+    border-radius: 25px ;
+    margin: 0 auto;
+    padding: 10px;
+}
+div.options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid black 2px;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 125px;
+    height: 150px;
+    padding: 25px;
+    background: rgb(177, 177, 177);
+    font-size: 1.3rem;
+}
+div.options button {
+    margin: 0 auto;
+    width: 80px;
+    height: auto;
+    border-radius: 25px;
+    transition: all ease-in 5ms;
+}
+div.options button:hover {
+    transform: scale(1.2);
+    color: white;
+    background-color: rgb(21, 21, 61);
+}
+section.registros {
+    display: grid;
+    padding: 15px;
+    min-width: 400px;
+    max-width: 720px;
+    text-align: center;
+    justify-items: auleto;
+    background-color: rgb(101, 91, 136);
+    border: solid 2px rgb(0, 0, 0);
+    border-radius: 25px ;
+    margin: 0 auto;
+    padding: 10px;
+}
+input {
+    margin: 15px;
+}
+section.tablas {
+    background-color: rgb(191, 255, 234);
+    display:felx;
+    flex-direction: column;
+}
+
+hr{
+    border: solid black 2px;
+    width: 100%;
+    border-style: dotted;
+}
+
+
