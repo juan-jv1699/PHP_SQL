@@ -2,24 +2,19 @@
 require_once('config/parameters.php');
 require_once('config/db.php');
 if($_POST){
-    if ($_REQUEST['radio'] == "rojo"){
-        setcookie("color", "#a52a2a", time() + 60 * 60 * 24 * 365, "/");
+    if ($_POST['coloSelect']){
+        $color= $_POST['coloSelect'];
+        echo $color;
+        setcookie("color", "{$color}", time() + 60 * 60 * 24 * 365, "/");
+        header("location:".base_url);
     }
-    elseif ($_REQUEST['radio'] == "verde"){
-        setcookie("color", "#00ff52", time() + 60 * 60 * 24 * 365, "/");
-    }
-    elseif ($_REQUEST['radio'] == "azul"){
-        setcookie("color", "#00008b", time() + 60 * 60 * 24 * 365, "/");  
-    }
-    header("refresh:0,url = menu.php");
 }
-
 if(!isset($_SESSION['nombre'])){
     header("location:".base_url);
 }
 ?>
 <!DOCTYPE html>
-<html lang="en" <?php if (isset($_COOKIE['color'])) echo " style=\"background:$_COOKIE[color]\"" ?>>
+<html lang="en" <?php if (isset($_COOKIE['color'])) echo " style='background:$_COOKIE[color]'" ?>>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +30,7 @@ if(!isset($_SESSION['nombre'])){
             height: 10rem;
         }
         div.big-card{
-            height: 18rem;
+            height: 14rem;
         }
     </style>
 </head>
@@ -196,10 +191,8 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Color fondo</h5>
                             <h6 class="card-subtitle mb-2 text-muted">selecione un color para personalizar la pagina</h6>
-                            <form class="colorform" action="<?= base_url?>index.php?controller=alumnos&action=menu" method="POST">
-                                Seleccione de que color desea que sea la página de ahora en más:<br>
-                                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-                                <input class="option" type="radio" value="azul" name="radio">Azul<br>
+                            <form class="colorform" action="<?=base_url?>index.php?controller=alumnos&action=menu&sientro" method="POST">
+                                <input type="color" class="form-control form-control-color" name="coloSelect" value="#ff0000" title="Choose your color">
                                 <div>
                                     <input class="btn btn-outline-primary m-3" type="submit" value="Crear cookie" >
                                 </div>
