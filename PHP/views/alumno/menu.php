@@ -1,6 +1,6 @@
 <?php
-echo "<h1>Bienvenido $_SESSION[nombre]</h1>";
-unset($_SESSION['register']);
+require_once('config/parameters.php');
+require_once('config/db.php');
 if($_POST){
     if ($_REQUEST['radio'] == "rojo"){
         setcookie("color", "#a52a2a", time() + 60 * 60 * 24 * 365, "/");
@@ -13,6 +13,10 @@ if($_POST){
     }
     header("refresh:0,url = menu.php");
 }
+
+if(!isset($_SESSION['nombre'])){
+    header("location:".base_url);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" <?php if (isset($_COOKIE['color'])) echo " style=\"background:$_COOKIE[color]\"" ?>>
@@ -21,90 +25,190 @@ if($_POST){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <link rel="stylesheet" href="<?= base_url?>/assets/css/style00.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        .not-active {
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        div.card {
+            height: 10rem;
+        }
+        div.big-card{
+            height: 18rem;
+        }
+    </style>
 </head>
 <style>
-    section>div.colorSelect {
-        display: flex;
-        margin: 0;
-        width: 100%;
+    .bgColor {
+        background-color: grey;
     }
-    div.colorSelect {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    div.colorSelect form .colorbtn {
-        position: relative;
-        bottom: 22px;
-    }
+   
 </style>
-<body >
-    <section>
-        <div class="options">
-            ingresar un alumno
-            <button type="button" onclick="location.href='index.php?controller=alumnos&action=register'" value="enter">Ir
-            </button>
-        </div>
-        <div class="options">
-            ingrese un curso
-            <button type="button" onclick="location.href='Exercise01PHP/registrarCurso.php'">Ir</button>
-        </div>
-        <div class="options">
-            consultar cursos
-            <button type="button" onclick="location.href='Exercise01PHP/registroCursos.php'">Ir</button>
-        </div>
-        <div class="options">
-            consultar alumnos
-            <button type="button" onclick="location.href='Exercise01PHP/registroAlumnos.php'">Ir</button>
-        </div>
-        <div class="options">
-            consultar alumno por email
-            <button type="button" onclick="location.href='Exercise01PHP/searchEmail.php'">Ir</button>
-        </div>
-        <div class="options">
-            eliminar un unico registro(por email)
-            <button type="button" onclick="location.href='Exercise01PHP/deleteRegistro.php'">Ir</button>
-        </div>
-        <div class="options">
-            resetear tabla
-            <button type="button" onclick="location.href='Exercise01PHP/deleteTable.php'" disabled>Ir</button>
-        </div>
-        <div class="options">
-            Tablas de multiplicar
-            <button type="button" onclick="location.href='Exercise01PHP/tableMultiply.php'">Ir</button>
-        </div>
-        <div class="options">
-            Upload a Image
-            <button type="button" onclick="location.href='Exercise01PHP/uploadImg.php'">Ir</button>
-        </div>
-    
-        <div class="options">
-            Complaints
-            <button type="button" onclick="location.href='Exercise01PHP/complaints.php'">Ir</button>
-        </div>
-        <div class="options">
-            Consultar Fechas
-            <button type="button" onclick="location.href='Exercise01PHP/searchDate.php'">Ir</button>
-        </div>
-        <div class="options">
-            Consultar codigo ASCII
-            <button type="button" onclick="location.href='Exercise01PHP/readcodAscii.php'">Ir</button>
-        </div>
-        <div class="options">
-            test
-            <button type="button" onclick="location.href='Exercise02PHP/test01.php'">Ir</button>
-        </div>
-        <div class="options colorSelect">
-            <form class="colorform" action="menu.php" method="POST">
-                Seleccione de que color desea que sea la página de ahora en más:<br>
-                <input class="option" type="radio" value="rojo" name="radio">Rojo<br>
-                <input class="option" type="radio" value="verde" name="radio">Verde<br>
-                <input class="option" type="radio" value="azul" name="radio">Azul<br>
-                <div>
-                    <input class="colorbtn" type="submit" value="Crear cookie" >
+<body class="bgColor">
+    <?=
+        "<div class='title h1 p-2 m-3'>Bienvenido $_SESSION[nombre]</div>";
+        unset($_SESSION['register']);
+    ?>
+    <div class="container-fluid">
+            <!-- Primera fila -->
+            <div class="row m-3 p-1">
+                <!-- col  -->
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ingresar un alumno</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">aqui registras un alumno</h6>
+                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
                 </div>
-              </form>
-        </div>
-    </section>
+
+                
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Consultar Alumnos</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">aqui puedes ver todos los alumnos</h6>
+                            <a href="index.php?controller=alumnos&action=allAlumnos" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ingresar un curso</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">aqui registras un curso</h6>
+                            <a href="Exercise01PHP/registrarCurso.php" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Consultar cursos</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">aqui consultas todos los cursos</h6>
+                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>  
+
+                
+            </div>
+            <!-- segunda fila -->
+            <div class="row m-3 p-1">
+
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Consultar un alumno</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">aqui puedes buscar alumno por email</h6>
+                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Eliminar un solo registro</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">aqui puedes eliminar un unico registro por su email</h6>
+                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Resetear la tabla</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Ten cuidado con esta fucion!!</h6>
+                            <a href="Exercise01PHP/registrarCurso.php" class="card-link btn btn-outline-primary not-active">Enter</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Tablas de multiplicar</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">divertida utilidad para ver las tablas de multiplicar 😁</h6>
+                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>  
+
+            </div>
+            <!-- Tercera fila -->
+            <div class="row m-3 p-1">
+                <!-- col  -->
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Cargar una imagen</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">aqui puedes subir una imagen</h6>
+                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Quejas y Reclamos</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Aqui puede depositar cualquier queja, reclamo o solicitud</h6>
+                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Consultar Fechas</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">aqui puede revisar el calendario</h6>
+                            <a href="Exercise01PHP/registrarCurso.php" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Consultar codigo ASCII </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">divertida utilidad para ver los codigos ASCSI</h6>
+                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                        </div>
+                    </div>
+                </div>  
+
+                
+            </div>
+            <!-- Cuarta fila -->
+            <div class="row m-3 p-1">
+                <!-- col  -->
+                <div class="col">
+                    <div class="card big-card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Color fondo</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">selecione un color para personalizar la pagina</h6>
+                            <form class="colorform" action="<?= base_url?>index.php?controller=alumnos&action=menu" method="POST">
+                                Seleccione de que color desea que sea la página de ahora en más:<br>
+                                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                                <input class="option" type="radio" value="azul" name="radio">Azul<br>
+                                <div>
+                                    <input class="btn btn-outline-primary m-3" type="submit" value="Crear cookie" >
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

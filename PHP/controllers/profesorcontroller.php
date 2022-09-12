@@ -1,6 +1,6 @@
 <?php
 require_once('models/alumnos.php');
-class alumnoscontroler{
+class profesorescontroller{
 
     public function index(){
         require_once('views/alumno/login.php');

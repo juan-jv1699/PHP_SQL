@@ -21,11 +21,7 @@
         <input type="submit" value="regresar al inicio">
     </form>
     <?php if($_POST){
-        echo "La tabla de multiplicar de $_REQUEST[num] es: <br>";
-        for ($i=1; $i <= 10; $i++) { 
-            $resp = $i * $_REQUEST['num'];
-            echo $resp."<br>";
-        }
+        utils::tablasMultiplicar($_POST['num']);
         ?>
         <form action="/index.html" method="post">
             <input type="submit" value="inicio">

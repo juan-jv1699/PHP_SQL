@@ -104,4 +104,27 @@ class alumno {
 
         return $result;
     }
-}
+    public function update(){
+        $sql="UPDATE alumnos SET nombre='{$this->getNombre()}', mail='{$this->getMail()}', codCurso={$this->getCodcurso()}, fechaNac='{$this->getFechaNac()}' WHERE codigoAlum={$this->getCodigoAlumn()}"; 
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+
+        return $result;
+    }
+    public function delete($id){
+        $sql ="DELETE FROM `alumnos` WHERE codigoAlum = {$id}";
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+
+        return $result;
+    }
+
+} //end class

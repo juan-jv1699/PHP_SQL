@@ -17,6 +17,10 @@
             echo "<h1>Datos incorrectos</h1>";
         };
     };
+    if(isset($_SESSION['nombre'])){
+        header("location:".base_url."index.php?controller=alumnos&action=menu");
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +65,7 @@
                     <!-- btn submit -->
                     <div class="row align-items-center p-1 mt-2">
                         <div class="col">
-                            <input class="btn-submit btn btn-secondary" type="submit" value="ENTER">
+                            <input class="btn-submit btn btn-primary" type="submit" value="ENTER">
                         </div>
                     </div>
                     
@@ -70,6 +74,5 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="./tryscript.js"></script>
 </body>
 </html>

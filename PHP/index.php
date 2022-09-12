@@ -7,7 +7,7 @@ session_start();
 dataBase::connect();
 
 if(isset($_GET['controller'])){
-    $controller_name = $_GET['controller'].'controler';
+    $controller_name = $_GET['controller'].'controller';
 }elseif(!isset($_GET['controller']) && !isset($_GET['action'])){
     $controller_name = controler_default;
 }
