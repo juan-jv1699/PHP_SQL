@@ -11,7 +11,7 @@
         <section class="container">
             <header class="row mt-5 mb-2">
                 <h2 class="col-6 offset-3 h1 title text-center card p-3">
-                    Eliminar Alumno
+                    Eliminar Curso
                 </h2>
             </header>
             <article class="row">
@@ -20,27 +20,24 @@
                         <!-- contenido -->
                         <?php if(isset($_GET['done'])):?>
                         <div class="alert alert-success">
-                            <p>Usuario eliminado con exito!</p>
+                            <p>Curso eliminado con exito!</p>
                         </div>
                         <?php else:?>
                             <?php
                                 $conexion=dataBase::connect();
-
-                                $registros = mysqli_query($conexion, "select * from alumnos where codigoAlum={$_GET['oldCode']}") 
+                                $id = $_GET['code'];
+                                $registros = mysqli_query($conexion, "SELECT * FROM `cursos` WHERE `codigoCurso`= {$id}") 
                                 or die("Problemas en el select:" . mysqli_error($conexion));
 
                                 if ($answer= mysqli_fetch_array($registros)) {
-                                    echo "Nombre: ".$answer[1]."<br>";
-                                    echo "Codigo: ".$answer[0]."<br>";
-                                    echo "Email: ".$answer[2]."<br>";
-                                    echo "Curso: ".$answer[4]."<br>";
-                                    echo "Fecha de nacimiento: {$answer[5]}";
+                                    echo "Nombre Curso: ".$answer['nombreCurso']."<br>";
+                                    echo "Codigo Curso: ".$answer['codigoCurso']."<br>";
                                 }
                             ?>
                         <hr>
-                        <form action="<?=base_url?>index.php?controller=alumnos&action=delete&delete=true" method="POST">
+                        <form action="<?=base_url?>index.php?controller=curso&action=delete&delete=true" method="POST">
                             <input type="hidden" name="deleteCod" value="<?=$answer[0]?>">
-                            <label for="submit">Realmente desea eliminar el usuario ?</label>
+                            <strong >Realmente desea eliminar el curso ?</strong>
                             <br>
                             <input class="btn btn-outline-primary" type="submit" name="submit" value="Continuar">
                         </form>

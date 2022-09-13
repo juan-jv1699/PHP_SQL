@@ -7,4 +7,7 @@ class utils {
             echo $resp."<br>";
         }
     }
+    public static function closeSessions($session){
+        unset($session);
+    }
 }

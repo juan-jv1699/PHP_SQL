@@ -1,7 +1,7 @@
 <?php
     if($_POST){
         $conexion = dataBase::connect();
-        $try= mysqli_query($conexion,"select nombre, mail, keyword from alumnos where mail='$_REQUEST[email]'");
+        $try= mysqli_query($conexion,"select nombre, mail, contraseñas from alumnos where mail='$_REQUEST[email]'");
         $tryarr = mysqli_fetch_array($try);
         // echo "<h1>$tryarr[]</h1>";
         if($tryarr){

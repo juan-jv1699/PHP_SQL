@@ -1,7 +1,7 @@
 <?php
 require_once('models/alumnos.php');
 class alumnoscontroller{
-    
+    // vistas
     public function index(){
         require_once('views/alumno/login.php');
     }
@@ -20,8 +20,15 @@ class alumnoscontroller{
     public function deleteview(){
         require_once('views/alumno/deleteAlum.php');
     }
+    public function viewGetOne(){
+        require_once("views/alumno/getOne.php");
+    }
+    public function viewDeleteOne(){
+        require_once("views/alumno/deleteOne.php");
+    }
+   
 
-
+    // metodos funcionales
     public function save(){
         if(isset($_POST)){
             $alumno = new alumno();
@@ -43,6 +50,7 @@ class alumnoscontroller{
     }
 
     public function delete(){
+        // se debe genrar una condicion para determinar a donde redireccionar la pagina
         if(isset($_GET['delete'])){
             if($_GET['delete']==true){
                 $alum = new alumno();
@@ -75,6 +83,10 @@ class alumnoscontroller{
 
     public function tablasMultiplicar(){
         require_once('views/utils/tableMultiply.php');
+    }
+
+    public function getOne(){
+
     }
 
 

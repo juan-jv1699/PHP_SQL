@@ -11,13 +11,15 @@
         <section class="container">
             <header class="row mt-5 mb-2">
                 <h2 class="col-6 offset-3 h1 title text-center card p-3">
-                    Update Data
+                    <!-- tiotulo de la funcion -->
+                    Cambiar Curso
                 </h2>
             </header>
             <article class="row">
                 <div class="col-6 offset-3 card mt-5">
                     <div class="d-flex flex-column p-5">
                         <!-- contenido -->
+                            <!-- condicion para saber si se cambio exitosamente un archivo -->
                         <?php if(isset($_SESSION['register'])):?>
                             <?php if($_SESSION['register']='complete'):?>
                             <div class="alert alert-success">
@@ -32,56 +34,28 @@
                         <?php endif?>
                         <?php
                             $conexion=dataBase::connect();
-                            if(isset($_GET['oldCode'])){
-                                $registros = mysqli_query($conexion, "select * from alumnos where codigoAlum={$_GET['oldCode']}") 
+                            if(isset($_GET['code'])){
+                                $registros = mysqli_query($conexion, "select * from cursos where codigoCurso={$_GET['code']}") 
                                 or die("Problemas en el select:" . mysqli_error($conexion));
                                 if($registros){
                                     if ($answer= mysqli_fetch_array($registros)) {
                                         echo "Nombre: ".$answer[1]."<br>";
-                                        echo "Codigo: ".$answer[0]."<br>";
-                                        echo "Email: ".$answer[2]."<br>";
-                                        echo "Curso: ".$answer[4]."<br>";
-                                        echo "Fecha de nacimiento: {$answer[5]}";
                                     }
                                 }
                             }
 
                         ?>
                         <?php if(!isset($_SESSION['register'])):?>
-                        <form action="<?=base_url?>index.php?controller=alumnos&action=update" method="post">
-                            <input type="hidden" name="codigoEstudiante" value="<?php echo $_REQUEST['oldCode'] ?>">
-                            <input type="hidden" value="$answer[0]" name="codigocurso">
-                            <hr>
+                        <form action="<?=base_url?>index.php?controller=curso&action=update" method="POST">
                             <p>si desea cambiar de nombre ingrese el nombre deseado</p>
                             <input type="text" name="nombreCambio" value="<?php echo $answer[1] ?>">
                             <hr>
-                            <p>si desea cambiar de email ingrese el email deseado</p>
-                            <input type="email" name="emailCambio" value="<?php echo $answer[2] ?>">
-                            <br>
-                            <p>si desea cambiar de curso seleccione el curso deseado</p>
-                            <select name="codigocurso">
-                            <?php
-                              $registros = mysqli_query($conexion, "select * from cursos") or
-                                die("Problemas en el select:" . mysqli_error($conexion));
-                              while ($reg = mysqli_fetch_array($registros)) {
-                                if ($answer['codigocurso'] == $reg['codigoCurso'])
-                                  echo "<option value=\"$reg[codigoCurso]\" selected>$reg[nombreCurso]</option>";
-                                else
-                                  echo "<option value=\"$reg[codigoCurso]\">$reg[nombreCurso]</option>";
-                              }
-                              ?>
-                            </select>
-                            <br>
-                            <hr>
-                            <p>si desea cambiar la fecha de nacimiento ingrese la fecha</p>
-                            <input type="date" name="dateCambio" value="<?php echo $answer[5] ?>">
-                            <br>
-                            <hr>
+                            
                             <input type="hidden" name="code" value="<?=$answer[0]?>">                          
                             <input class="mt-3 btn btn-success" type="submit" value="Submit">
                         </form>
                         <?php endif?>
-                        <form action="<?=base_url?>index.php?controller=alumnos&action=allAlumnos" method="post">
+                        <form action="<?=base_url?>index.php?controller=curso&action=viewAllCur" method="post">
                             <input class="mt-3 btn btn-primary" type="submit" value="Back">
                         </form>
                     </div>

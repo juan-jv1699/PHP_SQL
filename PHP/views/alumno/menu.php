@@ -36,7 +36,7 @@ if(!isset($_SESSION['nombre'])){
 </head>
 <style>
     .bgColor {
-        background-color: grey;
+        background-color: <?=$_COOKIE['color'];?>
     }
    
 </style>
@@ -75,7 +75,7 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Ingresar un curso</h5>
                             <h6 class="card-subtitle mb-2 text-muted">aqui registras un curso</h6>
-                            <a href="Exercise01PHP/registrarCurso.php" class="card-link btn btn-outline-primary">Enter</a>
+                            <a href="index.php?controller=curso&action=viewregCurso" class="card-link btn btn-outline-primary">Enter</a>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Consultar cursos</h5>
                             <h6 class="card-subtitle mb-2 text-muted">aqui consultas todos los cursos</h6>
-                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                            <a href="index.php?controller=curso&action=viewAllCur" class="card-link btn btn-outline-primary">Enter</a>
                         </div>
                     </div>
                 </div>  
@@ -100,7 +100,7 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Consultar un alumno</h5>
                             <h6 class="card-subtitle mb-2 text-muted">aqui puedes buscar alumno por email</h6>
-                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                            <a href="index.php?controller=alumnos&action=viewGetOne" class="card-link btn btn-outline-primary">Enter</a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Eliminar un solo registro</h5>
                             <h6 class="card-subtitle mb-2 text-muted">aqui puedes eliminar un unico registro por su email</h6>
-                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                            <a href="index.php?controller=alumnos&action=viewDeleteOne" class="card-link btn btn-outline-primary">Enter</a>
                         </div>
                     </div>
                 </div>
