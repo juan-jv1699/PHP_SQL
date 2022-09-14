@@ -131,7 +131,7 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Tablas de multiplicar</h5>
                             <h6 class="card-subtitle mb-2 text-muted">divertida utilidad para ver las tablas de multiplicar 😁</h6>
-                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                            <a href="index.php?controller=alumnos&action=tablasMultiplicar" class="card-link btn btn-outline-primary">Enter</a>
                         </div>
                     </div>
                 </div>  
@@ -145,7 +145,7 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Cargar una imagen</h5>
                             <h6 class="card-subtitle mb-2 text-muted">aqui puedes subir una imagen</h6>
-                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                            <a href="index.php?controller=alumnos&action=viewChargeImg" class="card-link btn btn-outline-primary">Enter</a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Quejas y Reclamos</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Aqui puede depositar cualquier queja, reclamo o solicitud</h6>
-                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                            <a href="index.php?controller=alumnos&action=viewComplaint" class="card-link btn btn-outline-primary">Enter</a>
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Consultar Fechas</h5>
                             <h6 class="card-subtitle mb-2 text-muted">aqui puede revisar el calendario</h6>
-                            <a href="Exercise01PHP/registrarCurso.php" class="card-link btn btn-outline-primary">Enter</a>
+                            <a href="index.php?controller=alumnos&action=viewCalendar" class="card-link btn btn-outline-primary">Enter</a>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Consultar codigo ASCII </h5>
                             <h6 class="card-subtitle mb-2 text-muted">divertida utilidad para ver los codigos ASCSI</h6>
-                            <a href="index.php?controller=alumnos&action=register" class="card-link btn btn-outline-primary">Enter</a>
+                            <a href="index.php?controller=alumnos&action=viewASCSI" class="card-link btn btn-outline-primary">Enter</a>
                         </div>
                     </div>
                 </div>  
@@ -201,7 +201,22 @@ if(!isset($_SESSION['nombre'])){
                     </div>
                 </div>
 
-    </div>
+            </div>
+            <!-- btn para cerrar sesion -->
+            <div class="row m-3 p-1">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Cerrar sesion</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">hasta su proxima visita</h6>
+                            <form class="colorform" action="<?=base_url?>index.php?controller=alumnos&action=closeSs" method="POST">
+                                <input class="btn btn-outline-primary m-3" type="submit" value="Cerrar" >
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

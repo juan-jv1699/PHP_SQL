@@ -7,7 +7,11 @@ class utils {
             echo $resp."<br>";
         }
     }
-    public static function closeSessions($session){
-        unset($session);
+    public static function closeSession($name){
+        if(isset($_SESSION[$name])){
+            $_SESSION[$name]=null;
+            unset($_SESSION[$name]);
+        }
+        return $name;
     }
 }

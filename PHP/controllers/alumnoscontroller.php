@@ -49,14 +49,24 @@ class alumnoscontroller{
         header("location: index.php?controller=alumnos&action=register");
     }
 
+    public function closeSs(){
+        utils::closeSession('nombre');
+        header("location:".base_url);
+    }
+
     public function delete(){
-        // se debe genrar una condicion para determinar a donde redireccionar la pagina
         if(isset($_GET['delete'])){
             if($_GET['delete']==true){
                 $alum = new alumno();
                 $alum->delete($_POST['deleteCod']);
+                $_SESSION['deleteOne'] = true;
             }
-            header("location:".base_url."index.php?controller=alumnos&action=deleteview&done=1");
+            if($_GET['one']== true){
+                header("location:".base_url."index.php?controller=alumnos&action=viewDeleteOne&done=1");
+            }else {
+                header("location:".base_url."index.php?controller=alumnos&action=deleteview&done=1");
+
+            }
         }
 
     }
@@ -81,13 +91,25 @@ class alumnoscontroller{
         header("location: index.php?controller=alumnos&action=updateview");
     }
 
+    // utils
+
     public function tablasMultiplicar(){
         require_once('views/utils/tableMultiply.php');
     }
 
-    public function getOne(){
-
+    public function viewChargeImg(){
+        require_once("views/utils/chargeImg.php");
     }
 
+    public function viewComplaint(){
+        require_once("views/utils/complaints.php");
+    }
 
+    public function viewCalendar(){
+        require_once("views/utils/calendar.php");
+    }
+
+    public function viewASCSI(){
+        require_once("views/utils/codeASCSI.php");
+    }
 }

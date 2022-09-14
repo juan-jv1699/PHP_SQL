@@ -28,7 +28,7 @@
                                 <p>Error al intentar realizar el proceso!</p>
                             </div>
                             <?php endif?>
-                            <?php utils::closeSessions($_SESSION['register'])?>
+                            <?php utils::closeSession('register')?>
                         <?php endif?>
                         <?php
                             $conexion=dataBase::connect();

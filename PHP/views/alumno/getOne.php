@@ -48,11 +48,6 @@
                                                 <p class="text-start">Fecha Nacimiento: <?=$answer[4]?></p>
                                             </div>
                                         </div>
-                                         <!-- "Nombre: ".$answer[1]."<br>";
-                                         "Codigo: ".$answer[0]."<br>";
-                                         "Email: ".$answer[2]."<br>";
-                                         "Curso: ".$answer[4]."<br>";
-                                         "Fecha de nacimiento: {$answer[5]}"; -->
                                     <?php endif;?>
                                     <?php
                                 }

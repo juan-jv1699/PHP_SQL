@@ -18,6 +18,12 @@
                 <div class="col-6 offset-3 card mt-5">
                     <div class="d-flex flex-column p-5">
                         <!-- contenido -->
+                        <?php if(isset($_SESSION['deleteOne'])):?>
+                        <div class="alert alert-warning">
+                            Se a eliminado con exito
+                        </div>
+                        <?php utils::closeSession('deleteOne')?>
+                        <?php endif?>
                         <form action="?controller=alumnos&action=viewDeleteOne" class="form form-control" method="POST">
                             <div>
                                 <label for="email">Ingresar el email de la persona que desea eliminar</label>
@@ -40,14 +46,12 @@
                             ?>
                                         <div class="card my-3">
                                             <div class="card-header">
-                                                <h4 class="text-center">Esta seguro de eliminar el usuario <?=$id?></h4>
+                                                <h4 class="text-center">Esta seguro de eliminar el usuario <?=$res->nombre?> <?=$id?></h4>
                                             </div>
                                             <div class="card-body">
-                                                <form action="<?=base_url?>index.php?controller=alumnos&action=delete&delete=true" class="form form-control d-flex flex-column">
-                                                    <h4><?=$res->nombre?></h4>
-                                                    <label for="deletCod"></label>
-                                                    <input type="hidden" name="deleteCod">
-                                                    <input type="submit" class="btn btn-danger" value="Eliminar">
+                                                <form action="<?=base_url?>index.php?controller=alumnos&action=delete&delete=true&one=true" class="form form-control d-flex flex-column" method="POST">
+                                                    <input type="hidden" name="deleteCod" value="<?=$id?>">
+                                                    <input type="submit" class="btn btn-danger w-25 text-center align-self-center" value="Eliminar">
                                                 </form>
                                             </div>
                                         </div>
