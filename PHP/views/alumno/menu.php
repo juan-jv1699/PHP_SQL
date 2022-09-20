@@ -121,7 +121,8 @@ if(!isset($_SESSION['nombre'])){
                         <div class="card-body">
                             <h5 class="card-title">Resetear la tabla</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Ten cuidado con esta fucion!!</h6>
-                            <a href="Exercise01PHP/registrarCurso.php" class="card-link btn btn-outline-primary not-active">Enter</a>
+                            <!--not-active-->
+                            <a href="index.php?controller=alumnos&action=dropAll" class="card-link btn btn-outline-primary ">Enter</a>
                         </div>
                     </div>
                 </div>

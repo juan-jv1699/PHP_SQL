@@ -18,10 +18,11 @@ require_once('views/layouts/header.php');
   <?php
   $conexion=dataBase::connect();
 
-  $registros = mysqli_query($conexion, "SELECT `codigoCurso`, `nombreCurso` FROM `cursos` LIMIT {$inicio}, {$page}") or
+  $registros = mysqli_query($conexion, "SELECT cur.codigoCurso, cur.nombreCurso, count(alu.codigoAlum) as cantidad, alu.nombre, alu.codCurso  FROM cursos as cur inner join alumnos as alu on cur.codigoCurso=alu.codCurso GROUP BY alu.codCurso LIMIT {$inicio}, {$page}") or
     die("Problemas en el select:" . mysqli_error($conexion));
+
   $impresos = 0;
-  while ($reg = mysqli_fetch_array($registros)):?>
+  while ($reg = mysqli_fetch_array($registros)) :?>
     <?php $impresos++;?>
     <div class="card">
         <div class="card-header">
@@ -31,6 +32,13 @@ require_once('views/layouts/header.php');
         <div class="card-body">
            <a href="<?=base_url?>index.php?controller=curso&action=viewDelete&code=<?=$reg[0]?>">❌</a>
            <a href="<?=base_url?>index.php?controller=curso&action=viewUpdate&code=<?= $reg[0]?>">✏️</a>
+           <p>Cantidad de alumnos inscritos en el curso: <?= $reg['cantidad']?></p>
+           <p>
+            <?php $names = mysqli_query($conexion, "SELECT nombre FROM alumnos WHERE codCurso = $reg[codigoCurso] ");?>
+            <?php while($nm = mysqli_fetch_array($names)):?>
+              <p><?= $nm['nombre']?></p>
+            <?php endwhile?>
+           </p>
         </div>
     </div>
     <hr>

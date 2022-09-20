@@ -91,6 +91,10 @@ class alumnoscontroller{
         header("location: index.php?controller=alumnos&action=updateview");
     }
 
+    public function dropAll(){
+        require_once('views/alumno/drop.php');
+    }
+
     // utils
 
     public function tablasMultiplicar(){

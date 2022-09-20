@@ -29,7 +29,7 @@
                                 <button type="submit" class="btn btn-primary mt-2">Submit</button>
                             </div>
                         </form>
-                        <form class="form-label" action="../menu.php">
+                        <form class="form-label" action="<?=base_url?>controller=alumnos&action=menu">
                             <input class="btn btn-outline-primary mt-3" type="submit" value="regresar al inicio">
                         </form>
                     </div>
