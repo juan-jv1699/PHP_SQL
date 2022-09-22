@@ -17,19 +17,33 @@
             <article class="row">
                 <div class="col-6 offset-3 card mt-5">
                     <div class="d-flex flex-column p-5">
-                        <form action="/Exercise01PHP/complaints_validate.php" method="post">
+                        <?php if(isset($_SESSION['complaint'])):?>
+                            <?php if($_SESSION['complaint'] == true):?>
+                            <div class="alert alert-success">
+                                <p>Hemos guardado su queja con exito!</p>
+                            </div>
+                            <?php else:?>
+                            <div class="alert alert-warning">
+                                <p>Error al intentar realizar el proceso!</p>
+                            </div>
+                            <?php endif?>
+                        <?php endif?>
+                        <!-- se elimina la session deseada -->
+                        <?php utils::closeSession('complaint')?>
+
+                        <form action="<?=base_url?>?controller=alumnos&action=complaints" method="post">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Ingrese su nombre:</label>
                                 <input class="form-control" type="text" name="name">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                                <label for="exampleFormControlTextarea1" class="form-label">Ingrese aqui su reclamo</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="complaints"></textarea>
                             </div>
                             <input class="btn btn-outline-primary" type="submit" value="Enviar">
-                            <a class="btn btn-outline-primary" href="./complaintPush.php">
-                                Quejas
-                            </a>
+                        </form>
+                        <form class="mt-3" action="<?=base_url?>?controller=alumnos&action=Allcomplaints" method="post">
+                            <input class="btn btn-outline-primary" type="submit" value="Ver todas las quejas"></input>
                         </form>
                         <form class="form-label" action="<?=base_url?>controller=alumnos&action=menu">
                             <input class="btn btn-outline-primary mt-3" type="submit" value="regresar al inicio">

@@ -127,4 +127,16 @@ class alumno {
         return $result;
     }
 
+    public function drop(){
+        $sql = "DELETE FROM `alumnos`";
+        $save = $this->db->query($sql);
+
+        $result = false;
+        if($save){
+            $result = true;
+        }
+
+        return $result;
+    }
+
 } //end class

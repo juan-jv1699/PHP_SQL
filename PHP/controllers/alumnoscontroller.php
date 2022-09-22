@@ -26,6 +26,12 @@ class alumnoscontroller{
     public function viewDeleteOne(){
         require_once("views/alumno/deleteOne.php");
     }
+    public function dropAll(){
+        require_once('views/alumno/drop.php');
+    }
+    public function Allcomplaints(){
+        require_once('views/utils/Allcomplaints.php');
+    }
    
 
     // metodos funcionales
@@ -91,11 +97,41 @@ class alumnoscontroller{
         header("location: index.php?controller=alumnos&action=updateview");
     }
 
-    public function dropAll(){
-        require_once('views/alumno/drop.php');
+    public function drop(){
+        $alumno = new alumno();
+        $save = $alumno->drop();
+        if($save){
+            $_SESSION['drop']= true;
+        }
+        header("location:".base_url."?controller=alumnos&action=dropAll");
+
     }
+ 
 
     // utils
+    public function complaints(){
+        if($_POST){
+            $complaint = fopen("datos.txt", "a") or
+            die("Problemas en la creacion");
+            fputs($complaint, $_POST['name']);
+            fputs($complaint, "\n");
+            fputs($complaint, $_POST['complaints']);
+            fputs($complaint, "\n");
+            fputs($complaint, "Fecha y Hora:");
+            $fecha = date("d/m/Y");
+            fputs($complaint, $fecha);
+            fputs($complaint, "  ");
+            $hora = date("H:i:s");
+            fputs($complaint, $hora);
+            fputs($complaint, "\n");
+            fputs($complaint, "------------------------------\n");
+            fclose($complaint);
+
+            $_SESSION['complaint'] = true; 
+    
+            header('location:'.base_url."?controller=alumnos&action=viewComplaint");
+        }
+    }
 
     public function tablasMultiplicar(){
         require_once('views/utils/tableMultiply.php');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2022 a las 19:09:01
+-- Tiempo de generación: 22-09-2022 a las 03:16:58
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -31,7 +31,7 @@ CREATE TABLE `alumnos` (
   `codigoAlum` int(10) UNSIGNED NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `mail` varchar(60) NOT NULL,
-  `keyword` varchar(10) DEFAULT NULL,
+  `contraseñas` varchar(255) NOT NULL,
   `codCurso` int(10) UNSIGNED NOT NULL,
   `fechaNac` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,15 +40,11 @@ CREATE TABLE `alumnos` (
 -- Volcado de datos para la tabla `alumnos`
 --
 
-INSERT INTO `alumnos` (`codigoAlum`, `nombre`, `mail`, `keyword`, `codCurso`, `fechaNac`) VALUES
-(20, 'admin', 'admin@test.com', 'admin', 1, '2000-08-08'),
-(21, 'jaunito', 'juanito@marana.co', '1234', 2, '2001-02-03'),
-(22, 'sara', 'sarita@mail.co', 'sara01', 3, '2003-07-03'),
-(23, 'carlitos', 'carlossayayin@mail.co', 'supersyayi', 4, '1995-08-01'),
-(24, 'robert', 'robertmimail@test.co', '123456', 5, '1995-08-01'),
-(27, 'carlos', 'carlo@mail.com', '12345', 1, '2022-09-15'),
-(28, 'jose', 'ad@test.com', '12345', 4, '2022-09-27'),
-(29, 'jose', 'correo@pruebas.co', '1245', 3, '2022-09-13');
+INSERT INTO `alumnos` (`codigoAlum`, `nombre`, `mail`, `contraseñas`, `codCurso`, `fechaNac`) VALUES
+(1, 'angie', 'ximega@gmail.com', '12345', 5, '2022-08-11'),
+(2, 'Parra GOD', 'admin@admin.com', '54321', 1, '1999-02-02'),
+(7, 'sra', 'sisi@test.mail', 'kakaroto99', 1, '2014-12-01'),
+(12, 'admin', 'admin@admin.com', 'admin', 2, '1999-10-16');
 
 -- --------------------------------------------------------
 
@@ -66,11 +62,40 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`codigoCurso`, `nombreCurso`) VALUES
-(1, 'PHP'),
+(1, 'PHP es muy chimba'),
 (2, 'ASP'),
 (3, 'JSP'),
-(4, 'CSS'),
-(5, 'CSS-3.0');
+(5, 'CSS-3.0'),
+(7, 'C++');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `emailviejo`
+--
+
+CREATE TABLE `emailviejo` (
+  `id_alumno` int(10) UNSIGNED DEFAULT NULL,
+  `email_antiguo` varchar(60) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `officialemployeds`
+--
+
+CREATE TABLE `officialemployeds` (
+  `id` int(3) UNSIGNED NOT NULL,
+  `employedId` int(3) UNSIGNED DEFAULT NULL,
+  `rol` varchar(255) NOT NULL,
+  `hourValue` decimal(5,2) DEFAULT NULL,
+  `workHours` int(3) DEFAULT NULL,
+  `salary` double(5,2) DEFAULT NULL,
+  `eps` varchar(255) NOT NULL,
+  `afp` varchar(255) NOT NULL,
+  `arl` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
@@ -90,6 +115,18 @@ ALTER TABLE `cursos`
   ADD PRIMARY KEY (`codigoCurso`);
 
 --
+-- Indices de la tabla `emailviejo`
+--
+ALTER TABLE `emailviejo`
+  ADD KEY `fk_mailviejo_alumnos` (`id_alumno`);
+
+--
+-- Indices de la tabla `officialemployeds`
+--
+ALTER TABLE `officialemployeds`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -97,13 +134,19 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `codigoAlum` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `codigoAlum` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `codigoCurso` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `codigoCurso` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `officialemployeds`
+--
+ALTER TABLE `officialemployeds`
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -114,6 +157,12 @@ ALTER TABLE `cursos`
 --
 ALTER TABLE `alumnos`
   ADD CONSTRAINT `fk_codCur` FOREIGN KEY (`codCurso`) REFERENCES `cursos` (`codigoCurso`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `emailviejo`
+--
+ALTER TABLE `emailviejo`
+  ADD CONSTRAINT `fk_mailviejo_alumnos` FOREIGN KEY (`id_alumno`) REFERENCES `alumnos` (`codigoAlum`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,8 +1,8 @@
 <?php 
-if(isset($_GET['day'])){
-    $day = $_GET['day']."/";
-    $month = $_GET['month']."/";
-    $year = $_GET['year']."/";
+if(isset($_POST['day'])){
+    $day = $_POST['day']."/";
+    $month = $_POST['month']."/";
+    $year = $_POST['year']."/";
     $strDate = $month.$day.$year;
     $date = date_parse($strDate);
     $errores = array();
@@ -11,27 +11,17 @@ if(isset($_GET['day'])){
     $datetoValidate = "{$date['day']}/{$date['month']}/{$date['year']}";
     if(checkdate($date['day'],$date['month'],$date['year'])){
         $dateCheck = true;
-        header("location: ./searchDate.php?date={$dateCheck}");
     }else{
-        if(empty($_GET['day']) || !is_numeric($_GET['day'])){
+        if(empty($_POST['day']) || !is_numeric($_POST['day'])){
             $errores['day']="Error en el dia";
         }
-        if(empty($_GET['month']) || !is_numeric($_GET['month'])){
+        if(empty($_POST['month']) || !is_numeric($_POST['month'])){
             $errores['month']="Error en el mes";
         }
-        if(empty($_GET['year']) || !is_numeric($_GET['year'])){
+        if(empty($_POST['year']) || !is_numeric($_POST['year'])){
             $errores['year']="Error en el año";
         }
     }
-    if(sizeof($errores)!=0){
-        $errores = serialize($errores);
-        $errores = urlencode($errores);
-        header("location: ./searchDate.php?errores=".$errores);
-    }
-}
-if(isset($_GET['errores'])){
-    $errores = $_GET['errores'];
-    $errores = unserialize($errores);
 }
 ?>
 <!DOCTYPE html>
@@ -53,7 +43,7 @@ if(isset($_GET['errores'])){
             <article class="row">
                 <div class="col-6 offset-3 card mt-5">
                     <div class="d-flex flex-column p-5">
-                        <form action="<?=base_url?>?controller=alumnos&action=viewCalendar" method="GET">
+                        <form action="<?=base_url?>index.php?controller=alumnos&action=viewCalendar" method="post">
                             <div class="mb-3">
                                 <label for="day" class="form-label">Ingrese el dia:</label>
                                 <?php if(isset($errores['day'])){echo "<p class='alert alert-warning'>{$errores['day']}</p>"; } ?>
@@ -72,8 +62,13 @@ if(isset($_GET['errores'])){
                             <input class="btn btn-outline-primary" type="submit" value="Enviar">
                         </form>
                         <div class="alert">
-                            <?php echo isset($_GET['errores']) ? "<p class='alert'>Corrige el formulario y vuelve a intenatarlo</p>" : ""?>
-                            <?php echo isset($_GET['date']) ? "<p>Formulario valido</p>" : ""?>
+                            <?php 
+                            $err = isset($errores) && sizeof($errores)!=0 ? "<p class='alert'>Corrige el formulario y vuelve a intenatarlo</p>" : "";
+                            $dat = isset($dateCheck) && $dateCheck == true ? "<p>Formulario valido</p>" : "";
+                            ?>
+                            <?= $err?>
+                            <?php unset($errores)?>
+                            <?= $dat?>
                         </div>
                         <form class="form-label" action="<?=base_url?>controller=alumnos&action=menu">
                             <input class="btn btn-outline-primary" type="submit" value="regresar al inicio">

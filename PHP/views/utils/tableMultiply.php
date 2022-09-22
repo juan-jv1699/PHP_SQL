@@ -22,9 +22,8 @@
             <div class="row">
                 <div class="col-6 offset-3">
                     <div class="card">
-                        <h1>Tablas de multiplicar</h1>
                         <form class="form" href="tableMultiply.php" method="post">
-                            <h4>digite el numero del que desea conocer la tabla de multiplicar</h4>
+                            <h5>digite el numero del que desea conocer la tabla de multiplicar</h5>
                             <input type="number" name="num">
                             <hr>
                             <input type="submit" name="operar">

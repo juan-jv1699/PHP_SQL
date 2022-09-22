@@ -46,8 +46,6 @@
                             }
 
                         ?>
-<<<<<<< Updated upstream
-                       
                         <?php if(isset($_GET['oldCode'])):?>
                             <form action="<?=base_url?>index.php?controller=alumnos&action=update" method="post">
                                 <input type="hidden" name="codigoEstudiante" value="<?php echo $_REQUEST['oldCode'] ?>">
@@ -81,42 +79,8 @@
                                 <input type="hidden" name="code" value="<?=$answer[0]?>">                          
                                 <input class="mt-3 btn btn-success" type="submit" value="Submit">
                             </form>
-=======
-                        <?php if(!isset($_SESSION['register'])):?>
-                        <form action="<?=base_url?>index.php?controller=alumnos&action=update" method="post">
-                            <input type="hidden" name="codigoEstudiante" value="<?php echo $_REQUEST['oldCode'] ?>">
-                            <input type="hidden" value="$answer[0]" name="codigocurso">
-                            <hr>
-                            <p>si desea cambiar de nombre ingrese el nombre deseado</p>
-                            <input type="text" name="nombreCambio" value="<?php echo $answer[1] ?>">
-                            <hr>
-                            <p>si desea cambiar de email ingrese el email deseado</p>
-                            <input type="email" name="emailCambio" value="<?php echo $answer[2] ?>">
-                            <br>
-                            <p>si desea cambiar de curso seleccione el curso deseado</p>
-                            <select name="codigocurso">
-                            <?php
-                              $registros = mysqli_query($conexion, "select * from cursos") or
-                                die("Problemas en el select:" . mysqli_error($conexion));
-                              while ($reg = mysqli_fetch_array($registros)) {
-                                if ($answer['codigocurso'] == $reg['codigoCurso'])
-                                  echo "<option value=\"$reg[codigoCurso]\" selected>$reg[nombreCurso]</option>";
-                                else
-                                  echo "<option value=\"$reg[codigoCurso]\">$reg[nombreCurso]</option>";
-                              }
-                              ?>
-                            </select>
-                            <br>
-                            <hr>
-                            <p>si desea cambiar la fecha de nacimiento ingrese la fecha</p>
-                            <input type="date" name="dateCambio" value="<?= $answer[5] ?>">
-                            <br>
-                            <hr>
-                            <input type="hidden" name="code" value="<?=$answer[0]?>">                          
-                            <input class="mt-3 btn btn-success" type="submit" value="Submit">
-                        </form>
->>>>>>> Stashed changes
                         <?php endif?>
+                        <!-- se elimina la session deseada -->
                         <?php utils::closeSession('register')?>
 
                         <form action="<?=base_url?>index.php?controller=alumnos&action=allAlumnos" method="post">
