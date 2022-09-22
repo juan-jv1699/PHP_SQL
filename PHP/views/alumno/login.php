@@ -70,6 +70,13 @@
                     </div>
                     
                 </form>
+                <form action="<?=base_url?>?controller=alumnos&action=register" method="POST">
+                    <div class="row align-items-center p-1 mt-2">
+                        <div class="col">
+                            <input class="btn-submit btn btn-primary" type="submit" value="Registrar">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

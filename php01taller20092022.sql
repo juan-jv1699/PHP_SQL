@@ -95,26 +95,7 @@ CREATE TABLE `emailviejo` (
 --
 
 INSERT INTO `emailviejo` (`id_alumno`, `email_antiguo`) VALUES
-(1, 'ximega@gmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com'),
-(2, 'alineintronno@hotmail.com');
+(1, 'ximega@gmail.com');
 
 --
 -- Índices para tablas volcadas
